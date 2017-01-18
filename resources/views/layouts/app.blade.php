@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="TengriNewsAdmin">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -56,11 +56,18 @@
         </div>
     </nav>
     @include('layouts.preload')
+
 </header>
+@if (!Auth::guest())
 <aside class="uk-width-1-5" >
     @include('layouts.sidebar')
 </aside>
-<main class="uk-width-4-5">
+@endif
+@if (!Auth::guest())
+    <main class="uk-width-4-5">
+@else
+    <main class="uk-width-1-1">
+@endif
     @yield('content')
 </main>
 @include('layouts.scripts')
